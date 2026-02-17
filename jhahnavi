@@ -4,10 +4,7 @@
     stages {
         stage('Checkout') {
             steps {
-                git(
-                    url: 'https://github.com/23p61a05k7-cmyk/jahnavi.git',
-                    branch: 'main'
-                )
+                checkout scm
             }
         }
 
@@ -15,15 +12,6 @@
             steps {
                 sh 'mvn clean install'
             }
-        }
-    }
-
-    post {
-        success {
-            echo 'Build Successful'
-        }
-        failure {
-            echo 'Build Failed'
         }
     }
 }
