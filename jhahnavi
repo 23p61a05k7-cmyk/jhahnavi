@@ -1,17 +1,27 @@
-node {
-    stage('Checkout') {
-        git 'https://github.com/your-repo/your-project.git'
+pipeline {
+    agent any
+
+    stages {
+        stage('Checkout') {
+            steps {
+                git branch: 'main',
+                    url: 'https://github.com/your-repo/your-project.git'
+            }
+        }
+
+        stage('Build') {
+            steps {
+                sh 'mvn clean install'
+            }
+        }
     }
 
-    stage('Build') {
-        sh 'mvn clean compile'
-    }
-
-    stage('Test') {
-        sh 'mvn test'
-    }
-
-    stage('Package') {
-        sh 'mvn package'
+    post {
+        success {
+            echo 'Build Successful'
+        }
+        failure {
+            echo 'Build Failed'
+        }
     }
 }
