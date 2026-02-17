@@ -6,7 +6,7 @@ pipeline {
             steps {
                 git(
                     branch: 'main',
-                    url: 'https://github.com/your-your-project.git'
+                    url: https://github.com/23p61a05k7-cmyk/jhahnavi.git
                 )
             }
         }
