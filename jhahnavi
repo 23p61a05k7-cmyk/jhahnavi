@@ -1,11 +1,24 @@
      pipeline {
     agent any
 
-    stages {
-        stage('Build') {
-            steps {
-                echo "Jen"
+    stages (clone){
+       step{
+           sh.echo ""
             }
+stages(build){
+step{
+sh.eccho'"building the application"'
+}
+stages(test)
+{
+step{
+sh.echo'"testing application"'
+}
+stage(deploy)
+{
+step{
+sh.echo'"deploy application.."'
+sh.python3 myapp
         }
     }
 }
